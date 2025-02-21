@@ -32,3 +32,14 @@ steps:
   inputs:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
+    
+- task: AzureRmWebAppDeployment@5
+  inputs:
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'MSDN Platforms Subscription(9a26c157-766d-4f46-8684-861804aef110)'
+    appType: 'webApp'
+    WebAppName: 'farahappseracc2025'
+    deployToSlotOrASE: true
+    ResourceGroupName: 'farahgroup'
+    SlotName: 'production'
+    packageForLinux: '$(build.artifactStagingDirectory)/**/*.zip'
